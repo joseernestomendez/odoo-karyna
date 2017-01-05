@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="sale_order_allowed_form_view" model="ir.ui.view">
+            <field name="name">sale.order.allowed.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <field name="order_line" position="before">
+                    <field name="only_allowed_products"
+                           attrs="{'invisible': [('state', 'not in', ('draft', 'send'))]}"
+                           class="oe_edit_only" />
+                    <label for="only_allowed_products"
+                           attrs="{'invisible': [('state', 'not in', ('draft', 'send'))]}"
+                           class="oe_edit_only" />
+                    <field name="allowed_tmpl_ids" invisible="1"/>
+                    <field name="allowed_product_ids" invisible="1"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

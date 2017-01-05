@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Inherit Form View to Modify it-->
+        <record id="sale_order_fill_extensions" model="ir.ui.view">
+            <field name="name">sales.order.fill.extensions</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_fill.sale_order_drivers_order_line_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='drivers_order_ids']/tree/field[@name='order_total']" position="after">
+                    <field name="whitespace_field1" string="Prod. definitive -->"/>
+                    <field name="prod_qty"/>
+                    <field name="prod_diff"/>
+                    <field name="prod_sacs"/>
+                    <field name="whitespace_field1" string="Prod. suggested -->"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="drivers_order_line_extension" model="ir.ui.view">
+            <field name="name">drivers.order.line.extension</field>
+            <field name="model">drivers.order.line</field>
+            <field name="inherit_id" ref="sale_order_fill.view_drivers_order_line_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_total']" position="after">
+                    <field name="whitespace_field1" string="Prod. definitive -->"/>
+                    <field name="prod_qty"/>
+                    <field name="prod_diff"/>
+                    <field name="prod_sacs"/>
+                    <field name="whitespace_field1" string="Prod. suggested -->"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

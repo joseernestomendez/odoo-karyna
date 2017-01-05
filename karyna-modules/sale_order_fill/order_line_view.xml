@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Inheriting from the sale.order.line form view -->
+        <record model="ir.ui.view" id="order_line_agent_form_inherit">
+            <field name="name">order.line.agent.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='price_unit']" position="after">
+                    <field name="product_qty_available"/>
+                    <field string="Sacks Quantity" name="sacks_quantity" readonly="0"
+                        on_change="onchange_sacks_quantity(product_packaging, sacks_quantity, context)"/>
+                    <field name="suggested_quantity"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
